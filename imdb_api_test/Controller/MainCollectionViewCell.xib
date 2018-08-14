@@ -18,29 +18,51 @@
                 <rect key="frame" x="0.0" y="0.0" width="256" height="355"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="item0" translatesAutoresizingMaskIntoConstraints="NO" id="dN3-jM-AIs">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FmB-0U-89z">
                         <rect key="frame" x="0.0" y="0.0" width="256" height="355"/>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AT COASTAL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZU-5H-oHt">
-                        <rect key="frame" x="78.5" y="10" width="99.5" height="20.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="355" id="NRR-cZ-tuh"/>
+                            <constraint firstAttribute="width" constant="256" id="amb-0Z-Ahr"/>
+                        </constraints>
+                    </view>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Q3-FU-0Cj">
+                        <rect key="frame" x="0.0" y="0.0" width="256" height="355"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="AT COASTAL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZU-5H-oHt">
+                                <rect key="frame" x="78.5" y="10" width="99.5" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="item0" translatesAutoresizingMaskIntoConstraints="NO" id="dN3-jM-AIs">
+                                <rect key="frame" x="0.0" y="0.0" width="256" height="355"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="256" id="JMh-o9-hce"/>
+                            <constraint firstAttribute="height" constant="355" id="fYm-TZ-Heb"/>
+                        </constraints>
+                    </view>
                 </subviews>
             </view>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="dN3-jM-AIs" secondAttribute="trailing" id="1bD-fb-YlI"/>
-                <constraint firstAttribute="bottom" secondItem="dN3-jM-AIs" secondAttribute="bottom" id="2w1-7d-zTC"/>
-                <constraint firstItem="FZU-5H-oHt" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="8vN-lv-c2E"/>
-                <constraint firstItem="FZU-5H-oHt" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="10" id="Sw8-Dk-Vti"/>
-                <constraint firstItem="dN3-jM-AIs" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="VJx-wU-M5z"/>
-                <constraint firstItem="dN3-jM-AIs" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="psW-kk-Qsw"/>
+                <constraint firstItem="FmB-0U-89z" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="01f-OT-Bsq"/>
+                <constraint firstItem="6Q3-FU-0Cj" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="4HT-vw-fAy"/>
+                <constraint firstItem="6Q3-FU-0Cj" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="AI7-C4-PXu"/>
+                <constraint firstItem="FmB-0U-89z" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="byh-pN-h3s"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
+                <outlet property="backConstraintY" destination="01f-OT-Bsq" id="LIq-cY-VKa"/>
+                <outlet property="backContainerView" destination="FmB-0U-89z" id="b1q-2p-AjP"/>
                 <outlet property="backgroundImageView" destination="dN3-jM-AIs" id="ucq-gA-Mbm"/>
                 <outlet property="customLabel" destination="FZU-5H-oHt" id="N83-xv-gsK"/>
+                <outlet property="frontConstraintY" destination="4HT-vw-fAy" id="Bnk-Tm-dXF"/>
+                <outlet property="frontContainerView" destination="6Q3-FU-0Cj" id="GHf-YS-xWl"/>
             </connections>
             <point key="canvasLocation" x="25" y="51.5"/>
         </collectionViewCell>

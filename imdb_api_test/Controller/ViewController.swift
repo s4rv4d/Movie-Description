@@ -24,6 +24,7 @@ class ViewController: ExpandingViewController {
         super.viewDidLoad()
         registerCell()
         fillCellIsOpenArray()
+        addGesture(to: collectionView!)
     }
     
     
@@ -33,6 +34,7 @@ class ViewController: ExpandingViewController {
         let nib = UINib(nibName: String(describing:MainCollectionViewCell.self), bundle: nil)
         //registering nib to the collection view of the pod
         collectionView?.register(nib, forCellWithReuseIdentifier: String(describing: MainCollectionViewCell.self))
+    
         
     }
     
@@ -42,17 +44,23 @@ class ViewController: ExpandingViewController {
     
     //To get the tableView controller
     fileprivate func getTableViewController() -> ExpandingTableViewController{
-        let storyboard = UIStoryboard(name: "Main.storyboard", bundle: nil)
-        let toViewController:DisplayTableViewController = storyboard.instantiateViewController(withIdentifier: "tableView") as! DisplayTableViewController
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let toViewController:DisplayTableViewController = storyboard.instantiateViewController(withIdentifier: "tableview") as! DisplayTableViewController
         return toViewController
     }
     
     //To add gesture to the collection view cell
     func addGesture(to view:UIView){
         //configuring up gesturing
-        let upGesture = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipeHandler(_:)))
+        
+        //To use the Init commmand copy the code from configurationhandler.swift from pods file and paste it to new file inside controllers folder
+        let upGesture = Init(UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipeHandler(_:)))) {
+            $0.direction = .up
+        }
         //configuring down gesturing
-        let downGesture = UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipeHandler(_:)))
+        let downGesture = Init(UISwipeGestureRecognizer(target: self, action: #selector(ViewController.swipeHandler(_:)))) {
+            $0.direction = .down
+        }
         
         //assigning gestures
         view.addGestureRecognizer(upGesture)
@@ -78,5 +86,41 @@ class ViewController: ExpandingViewController {
 extension ViewController {
     func scrollViewDidScroll(_: UIScrollView) {
         pageLabel.text = "\(currentIndex + 1)/\(itemArray.count)"
+    }
+}
+
+//MARK:Collection view stuff
+extension ViewController{
+    override func collectionView(_: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        super.collectionView(collectionView!, willDisplay: cell, forItemAt: indexPath)
+        
+        guard let cell =  cell as? MainCollectionViewCell else {return}
+        let index = indexPath.row % itemArray.count
+        print("index is :",index)
+        let info = itemArray[index]
+        cell.backgroundImageView.image = UIImage(named: info.imageName)
+        cell.customLabel.text = info.title
+        cell.cellIsOpen(cellIsOpen[index],animated: false)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? MainCollectionViewCell, currentIndex == indexPath.row else{return}
+        if cell.isOpened == false{
+            cell.cellIsOpen(true)
+        }else{
+            pushToViewController(getTableViewController())
+        }
+    }
+}
+
+//MARK:CollectionView datasource methods
+
+extension ViewController{
+    override func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
+        return itemArray.count
+    }
+    
+    override func collectionView(_: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return (collectionView?.dequeueReusableCell(withReuseIdentifier: String(describing: MainCollectionViewCell.self), for: indexPath))!
     }
 }

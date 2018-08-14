@@ -14,6 +14,13 @@ class MainCollectionViewCell: BasePageCollectionCell  {
     //MARK:IBOutlets
     @IBOutlet weak var backgroundImageView: UIImageView!
     @IBOutlet weak var customLabel: UILabel!
+//    @IBOutlet var frntContainerView: UIView!
+//    @IBOutlet var frntConstraintY: NSLayoutConstraint!
+//    @IBOutlet var bckContainerView: UIView!
+//    @IBOutlet var bckConstraintY: NSLayoutConstraint!
+    //the above outlets should bge connected to the outlets in BasePageCollectionCell
+    
+    
     
     override func awakeFromNib() {
         super.awakeFromNib()

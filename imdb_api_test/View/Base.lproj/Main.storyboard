@@ -40,7 +40,7 @@
         <!--Display Table View Controller-->
         <scene sceneID="xuE-ZA-Flw">
             <objects>
-                <tableViewController id="WUe-u4-Lmg" customClass="DisplayTableViewController" customModule="imdb_api_test" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="tableview" id="WUe-u4-Lmg" customClass="DisplayTableViewController" customModule="imdb_api_test" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="k59-fd-p6s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
